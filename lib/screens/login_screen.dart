@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:mymoney/custom/button.dart';
-import 'package:mymoney/custom/edittext.dart';
+import 'package:mymoney/custom/textfield.dart';
 
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => LoginScreenState();
+}
+
+class LoginScreenState extends State<LoginScreen> {
 
   final formKey = GlobalKey<FormState>();
+  final _passwordFocusNode = FocusNode();
+
+  bool _autovalidate = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Container(
         height: double.infinity,
         child: Center(
           child: SingleChildScrollView(
             child: Form(
               key: formKey,
+              autovalidateMode: _autovalidate
+                ? AutovalidateMode.onUserInteraction
+                : AutovalidateMode.disabled,
               child: Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: Column(
@@ -26,32 +38,47 @@ class LoginScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           SizedBox(width: double.infinity),
-                          Text(
-                            'My Money',
-                            style: TextStyle(
-                              color: Colors.teal,
-                              fontSize: 40,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset(
+                              'assets/images/logo_transparent.png'
                             ),
                           ),
                           SizedBox(height: 32),
-                          EditText(
-                            labelText: 'Correo',
-                            validator: (String value) {
-                              if(value == null || value.isEmpty)
-                                return 'Este campo no puede estar vacío';
-                              if(!value.contains('@'))
-                                return 'Correo inválido';
-                              return null;
-                            },
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: CustomTextField(
+                              icon: Icons.mail,
+                              hint: 'Correo',
+                              fillColor: Colors.grey[900],
+                              textInputAction: TextInputAction.done,
+                              validator: (String value) {
+                                if(value == null || value.isEmpty)
+                                  return 'Este campo no puede estar vacío';
+                                if(!value.contains('@'))
+                                  return 'Correo inválido';
+                                return null;
+                              },
+                              onFieldSubmitted: (_) => FocusScope.of(context)
+                                  .requestFocus(_passwordFocusNode),
+                            ),
                           ),
-                          EditText(
-                            labelText: 'Contraseña',
-                            obscureText: true,
-                            validator: (String value) {
-                              if(value == null || value.isEmpty)
-                                return 'Este campo no puede estar vacío';
-                              return null;
-                            },
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20.0),
+                            child: CustomTextField(
+                              icon: Icons.lock,
+                              hint: 'Contraseña',
+                              isPassword: true,
+                              focusNode: _passwordFocusNode,
+                              visibilityToggleable: true,
+                              fillColor: Colors.grey[900],
+                              textInputAction: TextInputAction.done,
+                              validator: (String value) {
+                                if(value == null || value.isEmpty)
+                                  return 'Este campo no puede estar vacío';
+                                return null;
+                              },
+                            ),
                           ),
                           Button(
                             text: 'Ingresar',
@@ -64,6 +91,8 @@ class LoginScreen extends StatelessWidget {
                                     appBar: AppBar(),
                                   )
                                 ));
+                              } else {
+                                setState(() => _autovalidate = true);
                               }
                             },
                           ),

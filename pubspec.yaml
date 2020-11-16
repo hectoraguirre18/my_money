@@ -27,3 +27,6 @@ flutter:
       - asset: assets/fonts/Montserrat-Regular.otf
       - asset: assets/fonts/Montserrat-Light.otf
       - asset: assets/fonts/Montserrat-Bold.otf
+
+  assets:
+    - assets/images/
