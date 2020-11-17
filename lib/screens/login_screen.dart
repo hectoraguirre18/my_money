@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mymoney/custom/button.dart';
 import 'package:mymoney/custom/textfield.dart';
-
+import 'package:mymoney/screens/register_account.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -9,7 +9,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
-
   final formKey = GlobalKey<FormState>();
   final _passwordFocusNode = FocusNode();
 
@@ -28,9 +27,7 @@ class LoginScreenState extends State<LoginScreen> {
               Spacer(),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/images/logo_transparent.png'
-                ),
+                child: Image.asset('assets/images/logo_transparent.png'),
               ),
               SizedBox(height: 32),
               loginForm(),
@@ -50,7 +47,12 @@ class LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     InkWell(
-                      onTap: () => print('continuar'),
+                      onTap: () {return(
+                        Navigator.push(context,
+                          MaterialPageRoute(
+                          builder: (context) => RegisterAccount()
+                        )));
+                      },
                       child: Text(
                         '¿No tienes\nuna cuenta?',
                         style: TextStyle(
@@ -84,8 +86,8 @@ class LoginScreenState extends State<LoginScreen> {
     return Form(
       key: formKey,
       autovalidateMode: _autovalidate
-        ? AutovalidateMode.onUserInteraction
-        : AutovalidateMode.disabled,
+          ? AutovalidateMode.onUserInteraction
+          : AutovalidateMode.disabled,
       child: Column(
         children: [
           Padding(
@@ -96,14 +98,13 @@ class LoginScreenState extends State<LoginScreen> {
               fillColor: Colors.grey[900],
               textInputAction: TextInputAction.done,
               validator: (String value) {
-                if(value == null || value.isEmpty)
+                if (value == null || value.isEmpty)
                   return 'Este campo no puede estar vacío';
-                if(!value.contains('@'))
-                  return 'Correo inválido';
+                if (!value.contains('@')) return 'Correo inválido';
                 return null;
               },
-              onFieldSubmitted: (_) => FocusScope.of(context)
-                  .requestFocus(_passwordFocusNode),
+              onFieldSubmitted: (_) =>
+                  FocusScope.of(context).requestFocus(_passwordFocusNode),
             ),
           ),
           Padding(
@@ -117,7 +118,7 @@ class LoginScreenState extends State<LoginScreen> {
               fillColor: Colors.grey[900],
               textInputAction: TextInputAction.done,
               validator: (String value) {
-                if(value == null || value.isEmpty)
+                if (value == null || value.isEmpty)
                   return 'Este campo no puede estar vacío';
                 return null;
               },
@@ -127,13 +128,14 @@ class LoginScreenState extends State<LoginScreen> {
             text: 'Ingresar',
             onPressed: () {
               //TODO Checar login y abrir siguiente pantalla
-              if(formKey.currentState.validate()) {
+              if (formKey.currentState.validate()) {
                 //login()
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => Scaffold(
-                    appBar: AppBar(),
-                  )
-                ));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Scaffold(
+                              appBar: AppBar(),
+                            )));
               } else {
                 setState(() => _autovalidate = true);
               }
