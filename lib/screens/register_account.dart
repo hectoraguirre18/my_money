@@ -23,6 +23,10 @@ class RegisterAccountState extends State<RegisterAccount> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
         child: Container(
           constraints: BoxConstraints.tightFor(height: height),
