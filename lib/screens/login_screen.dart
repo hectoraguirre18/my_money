@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mymoney/custom/button.dart';
 import 'package:mymoney/custom/textfield.dart';
-import 'package:mymoney/screens/register_account.dart';
+import 'package:mymoney/screens/home_screen.dart';
+import 'package:mymoney/screens/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -50,7 +51,7 @@ class LoginScreenState extends State<LoginScreen> {
                       onTap: () {return(
                         Navigator.push(context,
                           MaterialPageRoute(
-                          builder: (context) => RegisterAccount()
+                          builder: (context) => RegisterScreen()
                         )));
                       },
                       child: Text(
@@ -131,11 +132,11 @@ class LoginScreenState extends State<LoginScreen> {
               if (formKey.currentState.validate()) {
                 //login()
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Scaffold(
-                              appBar: AppBar(),
-                            )));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen()
+                  )
+                );
               } else {
                 setState(() => _autovalidate = true);
               }

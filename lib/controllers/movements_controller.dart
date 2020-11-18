@@ -1,0 +1,34 @@
+import 'dart:io';
+
+import 'package:mymoney/models/movement.dart';
+
+class MovementsController {
+  Future<List<Movement>> getMovements() async {
+    final movements = <Movement>[
+      Movement(
+        quantity: 500.0,
+        account: 'Efectivo',
+        date: DateTime.now()
+      ),
+      Movement(
+        quantity: 200.0,
+        account: 'Efectivo',
+        date: DateTime.now()
+      ),
+      Movement(
+        quantity: 3.0,
+        account: 'Efectivo',
+        date: DateTime.now()
+      ),
+      Movement(
+        quantity: 600.0,
+        account: 'Efectivo',
+        date: DateTime.now()
+      ),
+    ];
+
+    sleep(Duration(seconds: 2));
+
+    return movements;
+  }
+}

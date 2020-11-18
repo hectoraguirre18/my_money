@@ -3,12 +3,12 @@ import 'package:mymoney/custom/button.dart';
 import 'package:mymoney/custom/textfield.dart';
 
 
-class RegisterAccount extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => RegisterAccountState();
+  State<StatefulWidget> createState() => RegisterScreenState();
 }
 
-class RegisterAccountState extends State<RegisterAccount> {
+class RegisterScreenState extends State<RegisterScreen> {
 
   final formKey = GlobalKey<FormState>();
   final _passwordFocusNode = FocusNode();
