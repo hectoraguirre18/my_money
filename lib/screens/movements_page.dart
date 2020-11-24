@@ -7,7 +7,7 @@ class MovementsPage extends StatefulWidget {
   State<StatefulWidget> createState() => MovementsPageState();
 }
 
-class MovementsPageState extends State<MovementsPage> {
+class MovementsPageState extends State<MovementsPage> with AutomaticKeepAliveClientMixin {
 
   List<Movement> movements = [];
 
@@ -24,17 +24,24 @@ class MovementsPageState extends State<MovementsPage> {
 
   @override
   Widget build(BuildContext context) {
-
+    super.build(context);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Colors.grey[900],
       ),
-      margin: EdgeInsets.all(32),
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: movements.length,
-        itemBuilder: (context, index) => listItem(index),
+      margin: EdgeInsets.all(16),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: ListView.separated(
+          shrinkWrap: true,
+          itemCount: movements.length,
+          itemBuilder: (context, index) => listItem(index),
+          separatorBuilder: (context, index) => Divider(
+            color: Colors.grey[850],
+            thickness: 1,
+          ),
+        ),
       ),
     );
   }
@@ -74,4 +81,7 @@ class MovementsPageState extends State<MovementsPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

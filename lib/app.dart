@@ -9,6 +9,7 @@ class App extends StatelessWidget {
       home: LoginScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
         scaffoldBackgroundColor: Colors.grey[850],
         fontFamily: 'Montserrat',
       ),

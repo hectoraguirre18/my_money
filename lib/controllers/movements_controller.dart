@@ -27,8 +27,6 @@ class MovementsController {
       ),
     ];
 
-    sleep(Duration(seconds: 2));
-
     return movements;
   }
 }

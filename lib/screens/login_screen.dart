@@ -131,11 +131,12 @@ class LoginScreenState extends State<LoginScreen> {
               //TODO Checar login y abrir siguiente pantalla
               if (formKey.currentState.validate()) {
                 //login()
-                Navigator.push(
+                Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
                     builder: (context) => HomeScreen()
-                  )
+                  ),
+                  (_) => false
                 );
               } else {
                 setState(() => _autovalidate = true);

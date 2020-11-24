@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mymoney/drawers/home_drawer.dart';
 import 'package:mymoney/screens/movements_page.dart';
 import 'package:mymoney/screens/stats_page.dart';
 
@@ -7,14 +8,14 @@ class HomeScreen extends StatefulWidget{
   State<StatefulWidget> createState() => HomeScreenState();
 }
 
-class HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMixin{
+class HomeScreenState extends State<HomeScreen>{
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(),
+        drawer: HomeDrawer(),
         body: TabBarView(
           children: [
             MovementsPage(),
@@ -37,6 +38,9 @@ class HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMix
                 text: 'Movements',
               ),
               Tab(
+                icon: Icon(
+                  Icons.bar_chart
+                ),
                 text: 'Stats',
               ),
             ],
@@ -45,7 +49,4 @@ class HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMix
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }
