@@ -99,9 +99,9 @@ class LoginScreenState extends State<LoginScreen> {
               fillColor: Colors.grey[900],
               textInputAction: TextInputAction.done,
               validator: (String value) {
-                if (value == null || value.isEmpty)
-                  return 'Este campo no puede estar vacío';
-                if (!value.contains('@')) return 'Correo inválido';
+                // if (value == null || value.isEmpty)
+                //   return 'Este campo no puede estar vacío';
+                // if (!value.contains('@')) return 'Correo inválido';
                 return null;
               },
               onFieldSubmitted: (_) =>
@@ -119,8 +119,8 @@ class LoginScreenState extends State<LoginScreen> {
               fillColor: Colors.grey[900],
               textInputAction: TextInputAction.done,
               validator: (String value) {
-                if (value == null || value.isEmpty)
-                  return 'Este campo no puede estar vacío';
+                // if (value == null || value.isEmpty)
+                //   return 'Este campo no puede estar vacío';
                 return null;
               },
             ),

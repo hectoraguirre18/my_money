@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mymoney/screens/accounts_screen.dart';
 
 class HomeDrawer extends StatelessWidget{
   @override
@@ -42,11 +43,7 @@ class HomeDrawer extends StatelessWidget{
                 ],
               ),
               decoration: BoxDecoration(
-                // image: DecorationImage(
-                //   image: AssetImage('assets/images/drawer_bg.png'),
-                //   fit: BoxFit.cover,
-                // )
-                color: Colors.deepPurple
+                color: Colors.teal
               ),
             ),
           ]..addAll(List.generate(
@@ -81,7 +78,11 @@ class HomeDrawer extends StatelessWidget{
     _Option(
       icon: Icons.credit_card,
       title: 'Mis Cuentas',
-      onClick: () => print('Mi Cuentas')
+      onClick: () {
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) => AccountsScreen()
+        ));
+      }
     ),
     _Option(
       icon: Icons.notifications,
