@@ -7,22 +7,22 @@ class MovementsController {
     final movements = <Movement>[
       Movement(
         quantity: 500.0,
-        account: 'Efectivo',
+        accountID: 'Efectivo',
         date: DateTime.now()
       ),
       Movement(
         quantity: 200.0,
-        account: 'Efectivo',
+        accountID: 'Efectivo',
         date: DateTime.now()
       ),
       Movement(
         quantity: 3.0,
-        account: 'Efectivo',
+        accountID: 'Efectivo',
         date: DateTime.now()
       ),
       Movement(
         quantity: 600.0,
-        account: 'Efectivo',
+        accountID: 'Efectivo',
         date: DateTime.now()
       ),
     ];

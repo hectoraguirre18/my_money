@@ -62,7 +62,7 @@ class MovementsPageState extends State<MovementsPage> with AutomaticKeepAliveCli
           Column(
             children: [
               Text(
-                movements.elementAt(index).account,
+                movements.elementAt(index).accountID,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 12

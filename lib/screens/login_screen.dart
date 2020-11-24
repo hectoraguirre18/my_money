@@ -48,11 +48,10 @@ class LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {return(
-                        Navigator.push(context,
-                          MaterialPageRoute(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
                           builder: (context) => RegisterScreen()
-                        )));
+                        ));
                       },
                       child: Text(
                         '¿No tienes\nuna cuenta?',
@@ -67,7 +66,15 @@ class LoginScreenState extends State<LoginScreen> {
               ),
               Spacer(),
               InkWell(
-                onTap: () => print('continuar'),
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen()
+                    ),
+                    (_) => false
+                  );
+                },
                 child: Text(
                   'Continuar sin cuenta',
                   style: TextStyle(
@@ -99,9 +106,9 @@ class LoginScreenState extends State<LoginScreen> {
               fillColor: Colors.grey[900],
               textInputAction: TextInputAction.done,
               validator: (String value) {
-                // if (value == null || value.isEmpty)
-                //   return 'Este campo no puede estar vacío';
-                // if (!value.contains('@')) return 'Correo inválido';
+                if (value == null || value.isEmpty)
+                  return 'Este campo no puede estar vacío';
+                if (!value.contains('@')) return 'Correo inválido';
                 return null;
               },
               onFieldSubmitted: (_) =>
@@ -119,8 +126,8 @@ class LoginScreenState extends State<LoginScreen> {
               fillColor: Colors.grey[900],
               textInputAction: TextInputAction.done,
               validator: (String value) {
-                // if (value == null || value.isEmpty)
-                //   return 'Este campo no puede estar vacío';
+                if (value == null || value.isEmpty)
+                  return 'Este campo no puede estar vacío';
                 return null;
               },
             ),
