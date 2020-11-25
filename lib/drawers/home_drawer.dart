@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mymoney/screens/about_screen.dart';
 import 'package:mymoney/screens/accounts_screen.dart';
 
 class HomeDrawer extends StatelessWidget{
@@ -95,6 +96,11 @@ class HomeDrawer extends StatelessWidget{
     _Option(
       icon: Icons.help_outline,
       title: 'About MyMoney',
+      onClick: () {
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) => AboutScreen()
+        ));
+      }
     ),
   ];
 }
