@@ -77,7 +77,7 @@ class HomeDrawer extends StatelessWidget{
   options(context) => <_Option>[
     _Option(
       icon: Icons.credit_card,
-      title: 'Mis Cuentas',
+      title: 'Money Accounts',
       onClick: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) => AccountsScreen()
@@ -86,18 +86,15 @@ class HomeDrawer extends StatelessWidget{
     ),
     _Option(
       icon: Icons.notifications,
-      title: 'Notificaciones',
-      onClick: () => print('Notificaciones')
+      title: 'Notifications',
     ),
     _Option(
       icon: Icons.settings,
-      title: 'Ajustes',
-      onClick: () => print('Ajustes')
+      title: 'Settings',
     ),
     _Option(
       icon: Icons.help_outline,
-      title: 'Acerca de MyMoney',
-      onClick: () => print('Acerca de My Money')
+      title: 'About MyMoney',
     ),
   ];
 }

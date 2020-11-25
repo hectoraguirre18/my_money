@@ -43,6 +43,7 @@ class AccountsScreenState extends State<AccountsScreen> {
                 separatorBuilder: (context, index) => Divider(
                   color: Colors.grey[850],
                   thickness: 1,
+                  height: 1,
                 ),
               ),
             ),
@@ -58,13 +59,10 @@ class AccountsScreenState extends State<AccountsScreen> {
         ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          final account = await showDialog(
+          await showDialog(
             context: context,
             builder: (context) => addAccountDialog(context)
           );
-          if(account != null) {
-            print('save account');
-          }
         },
         child: Icon(Icons.add),
       ),
@@ -72,15 +70,20 @@ class AccountsScreenState extends State<AccountsScreen> {
   }
 
   Widget listItem(index) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16),
-      child: Row(
-        children: [
-          Text(
-            accounts.elementAt(index).name,
-            style: TextStyle(color: Colors.white),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16),
+          child: Row(
+            children: [
+              Text(
+                accounts.elementAt(index).name,
+                style: TextStyle(color: Colors.white),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -95,7 +98,7 @@ class AccountsScreenState extends State<AccountsScreen> {
         final controller = AccountsController.getInstance();
         await controller.saveAccount(Account(name: _name));
         await loadAccounts();
-        Navigator.pop(context, Account(name: _name));
+        Navigator.pop(context);
       }
     }
 

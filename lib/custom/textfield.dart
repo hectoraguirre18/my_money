@@ -13,6 +13,7 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword;
   final bool clearable;
   final bool visibilityToggleable;
+  final TextInputType textInputType;
 
   final String initialValue;
 
@@ -29,6 +30,7 @@ class CustomTextField extends StatefulWidget {
     this.clearable = false,
     this.visibilityToggleable = false,
     this.initialValue,
+    this.textInputType
   }): assert(clearable == false || visibilityToggleable == false);
 
   @override
@@ -61,6 +63,7 @@ class _TextFieldState extends State<CustomTextField>{
           color: Colors.white,
           fontSize: 16
         ),
+        keyboardType: widget.textInputType,
         cursorColor: Colors.teal,
         textAlignVertical: TextAlignVertical.center,
         onChanged: (_) {
