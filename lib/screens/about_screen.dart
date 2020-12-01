@@ -10,6 +10,7 @@ class AboutScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
+        padding: EdgeInsets.all(8),
         child: Opacity(
           opacity: 0.7,
           child: Padding(
@@ -54,7 +55,8 @@ class AboutScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 24.0),
                       child: Text(
-                        'Héctor René Aguirre Chávez 320793',
+                        'Héctor René Aguirre Chávez\n320793',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -63,7 +65,8 @@ class AboutScreen extends StatelessWidget {
                     ),Padding(
                       padding: const EdgeInsets.symmetric(vertical:  16.0),
                       child: Text(
-                        'Carlos Tomás García Martínez 320605',
+                        'Carlos Tomás García Martínez\n320605',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
